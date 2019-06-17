@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListGroup } from 'reactstrap';
+import { ListGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 
 import { addToDo, toggleToDo } from '../actions/index';
 import ToDoItem from './ToDoItem';
@@ -18,7 +18,7 @@ class ToDoList extends React.Component {
 
     addToDo = e => {
         e.preventDefault();
-        this.props.addTodo(this.state.newToDo);
+        this.props.addToDo(this.state.newToDo);
         this.setState({
             newToDo: ''
         });
@@ -37,6 +37,12 @@ class ToDoList extends React.Component {
                             />
                         ))}
                     </ListGroup>
+                    <Form onSubmit={this.addToDo}>
+                        <FormGroup className='mt-3'>
+                            <Label for="todo">What Do You Need To Do?</Label>
+                            <Input onChange={this.handleChanges} type='text' name='newToDo' id='newToDo' placeholder='New To Do...' />
+                        </FormGroup>
+                    </Form>
                 </div>
             </div>
         )

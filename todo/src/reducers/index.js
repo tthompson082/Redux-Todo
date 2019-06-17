@@ -19,15 +19,17 @@ export const reducer = (state = initialState, action) => {
     console.log(action);
     switch(action.type) {
         case 'ADD_TODO':
-            return [
-                ...state,
-                {
-                    value: action.payload,
-                    completed: false
-                }
-            ]
+            return {
+                toDo: [
+                    ...state.toDo,
+                    {
+                        value: action.payload,
+                        completed: false
+                    }
+                ]
+            }
         case 'TOGGLE_TODO':
-            return state.map(todo => (todo.value === action.value) ? { ...todo, completed: !todo.completed } : todo)
+            return state.toDo.map(todo => (todo.value === action.value) ? { ...todo, completed: !todo.completed } : todo)
         default:
             return state
     }
