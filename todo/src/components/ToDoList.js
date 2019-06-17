@@ -57,6 +57,7 @@ class ToDoList extends React.Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         toDo: state.toDo
     }
