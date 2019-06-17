@@ -28,7 +28,7 @@ class ToDoList extends React.Component {
         console.log(this.props.toDo)
         return (
             <div>
-                <Navbar color='secondary'>
+                <Navbar color='secondary' className='text-white'>
                     <NavbarBrand className='mr-auto'>Redux To Do List</NavbarBrand>
                 </Navbar>
                 <div className='row justify-content-md-center'>
