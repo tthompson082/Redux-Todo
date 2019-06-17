@@ -7,7 +7,7 @@ const initialState = {
         },
         {
         value: 'Do the Dishes',
-        completed: true,
+        completed: false,
         id: 2
         },
         {

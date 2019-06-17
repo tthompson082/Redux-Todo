@@ -32,7 +32,7 @@ class ToDoList extends React.Component {
                     <NavbarBrand className='mr-auto'>Redux To Do List</NavbarBrand>
                 </Navbar>
                 <div className='row justify-content-md-center'>
-                    <div className='col-4 offset-auto justify-content-center mt-2'>
+                    <div className='col-4 offset-auto justify-content-center mt-4'>
                         <ListGroup>
                             {this.props.toDo.map(toDo => (
                                 <ToDoItem 
