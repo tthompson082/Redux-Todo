@@ -1,17 +1,19 @@
-const initialState = [
-    {
+const initialState = {
+    toDo: [    
+        {
         value: 'Walk the Dog',
         completed: false
-    },
-    {
+        },
+        {
         value: 'Do the Dishes',
         completed: false
-    },
-    {
+        },
+        {
         value: 'Wash the Car',
         completed: false
-    }
-]
+        }]
+}
+
 
 export const reducer = (state = initialState, action) => {
     console.log(action);

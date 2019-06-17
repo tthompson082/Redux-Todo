@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { addToDo, toggleToDo } from '../actions/index';
+import ToDoItem from './ToDoItem';
 
 class ToDoList extends React.Component {
     state = {
@@ -23,11 +24,17 @@ class ToDoList extends React.Component {
     };
 
     render() {
+        console.log(this.props.toDo)
         return (
             <div>
                 <h1>To Do List!</h1>
                 <ul>
-                    <li>{this.props.value}</li>
+                    {this.props.toDo.map(toDo => (
+                        <ToDoItem 
+                            key={Math.random()}
+                            toDoProp={toDo}
+                        />
+                    ))}
                 </ul>
             </div>
         )
@@ -36,8 +43,7 @@ class ToDoList extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        value: state.value,
-        completed: state.completed
+        toDo: state.toDo
     }
 }
 
