@@ -2,21 +2,22 @@ const initialState = {
     toDo: [    
         {
         value: 'Walk the Dog',
-        completed: false
+        completed: false,
         },
         {
         value: 'Do the Dishes',
-        completed: true
+        completed: true,
         },
         {
         value: 'Wash the Car',
-        completed: false
+        completed: false,
         }]
 }
 
 
 export const reducer = (state = initialState, action) => {
     console.log(action);
+    console.log(state.toDo)
     switch(action.type) {
         case 'ADD_TODO':
             return {

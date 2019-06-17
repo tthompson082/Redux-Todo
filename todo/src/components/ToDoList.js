@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListGroup, Form, FormGroup, Input, Label } from 'reactstrap';
+import { ListGroup, Form, FormGroup, Input, Label, Button, Navbar, NavbarBrand } from 'reactstrap';
 
 import { addToDo, toggleToDo } from '../actions/index';
 import ToDoItem from './ToDoItem';
@@ -27,22 +27,29 @@ class ToDoList extends React.Component {
     render() {
         console.log(this.props.toDo)
         return (
-            <div className='row justify-content-md-center'>
-                <div className='col-4 offset-auto justify-content-center mt-2'>
-                    <ListGroup>
-                        {this.props.toDo.map(toDo => (
-                            <ToDoItem 
-                                key={Math.random()}
-                                toDoProp={toDo}
-                            />
-                        ))}
-                    </ListGroup>
-                    <Form onSubmit={this.addToDo}>
-                        <FormGroup className='mt-3'>
-                            <Label for="todo">What Do You Need To Do?</Label>
-                            <Input onChange={this.handleChanges} type='text' name='newToDo' id='newToDo' placeholder='New To Do...' />
-                        </FormGroup>
-                    </Form>
+            <div>
+                <Navbar color='secondary'>
+                    <NavbarBrand className='mr-auto'>Redux To Do List</NavbarBrand>
+                </Navbar>
+                <div className='row justify-content-md-center'>
+                    <div className='col-4 offset-auto justify-content-center mt-2'>
+                        <ListGroup>
+                            {this.props.toDo.map(toDo => (
+                                <ToDoItem 
+                                    key={Math.random()}
+                                    toDoProp={toDo}
+                                    toggleToDo={this.props.toggleToDo}
+                                />
+                            ))}
+                        </ListGroup>
+                        <Form onSubmit={this.addToDo}>
+                            <FormGroup className='mt-3'>
+                                <Label for="todo">What Do You Need To Do?</Label>
+                                <Input onChange={this.handleChanges} type='text' name='newToDo' id='newToDo' placeholder='New To Do...' value={this.state.newToDo} />
+                                <Button className='mt-3' color='primary'>Add New To Do</Button>
+                            </FormGroup>
+                        </Form>
+                    </div>
                 </div>
             </div>
         )
