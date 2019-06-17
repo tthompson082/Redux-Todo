@@ -6,7 +6,7 @@ const initialState = {
         },
         {
         value: 'Do the Dishes',
-        completed: false
+        completed: true
         },
         {
         value: 'Wash the Car',

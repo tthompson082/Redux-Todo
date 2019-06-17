@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { ListGroup } from 'reactstrap';
 
 import { addToDo, toggleToDo } from '../actions/index';
 import ToDoItem from './ToDoItem';
@@ -26,16 +27,17 @@ class ToDoList extends React.Component {
     render() {
         console.log(this.props.toDo)
         return (
-            <div>
-                <h1>To Do List!</h1>
-                <ul>
-                    {this.props.toDo.map(toDo => (
-                        <ToDoItem 
-                            key={Math.random()}
-                            toDoProp={toDo}
-                        />
-                    ))}
-                </ul>
+            <div className='row justify-content-md-center'>
+                <div className='col-4 offset-auto justify-content-center mt-2'>
+                    <ListGroup>
+                        {this.props.toDo.map(toDo => (
+                            <ToDoItem 
+                                key={Math.random()}
+                                toDoProp={toDo}
+                            />
+                        ))}
+                    </ListGroup>
+                </div>
             </div>
         )
     }
