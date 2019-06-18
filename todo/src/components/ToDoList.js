@@ -1,14 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListGroup, Form, FormGroup, Input, Label, Button, Navbar, NavbarBrand } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, ListGroup, Form, FormGroup, Input, Label, Button, Navbar, NavbarBrand } from 'reactstrap';
 
 import { addToDo, toggleToDo, deleteToDo, clearAll, clearCompleted } from '../actions/index';
 import ToDoItem from './ToDoItem';
 
 class ToDoList extends React.Component {
     state = {
-        newToDo: ''
+        newToDo: '',
+        modal: false
     };
+
+    toggle = () => {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }))
+    }
+
+    modalClear = () => {
+        this.props.clearAll();
+        this.setState({
+            modal: false
+        })
+    }
 
     handleChanges = e => {
         this.setState({
@@ -50,10 +64,21 @@ class ToDoList extends React.Component {
                                 <Button block className='mt-3' color='primary'>Add New To Do</Button>
                             </FormGroup>
                         </Form>
-                        <Button block color='success' onClick={this.props.clearCompleted} className='mb-3'>Clear Completed</Button>
+                        <Button block color='success' onClick={(this.props.toDo.find(todo => todo.completed === true)) ? this.props.clearCompleted : this.toggle} className='mb-3'>Clear Completed</Button>
                         <Button block color='warning' onClick={this.props.clearAll} className='mb-3'>Clear All</Button>
                     </div>
                 </div>
+
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>Warning!</ModalHeader>
+                    <ModalBody>
+                        It doesn't look like you have any items currently marked as completed. Would you like to clear all items?
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color='danger' onClick={this.modalClear} className='mr-2'>Clear All</Button>
+                        <Button color='secondary' onClick={this.toggle}>Cancel</Button>
+                    </ModalFooter>
+                </Modal>
             </div>
         )
     }
