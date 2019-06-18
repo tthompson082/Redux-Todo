@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListGroupItem } from 'reactstrap';
+import { ListGroupItem, Button } from 'reactstrap';
 
 const ToDoItem = props => {
     console.log(props.toggleToDo)
@@ -8,6 +8,7 @@ const ToDoItem = props => {
             textDecoration: props.toDoProp.completed ? 'line-through' : 'none'
         }}>
             {props.toDoProp.value}
+            <Button size='sm' color='danger' className='float-right'>Delete</Button>
         </ListGroupItem>
     )
 }

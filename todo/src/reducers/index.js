@@ -1,3 +1,5 @@
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODO } from '../actions/index'
+
 const initialState = {
     toDo: [    
         {
@@ -17,23 +19,25 @@ const initialState = {
         }]
 }
 
+let idValue = 4
+
 
 export const reducer = (state = initialState, action) => {
     console.log(action);
     console.log(state)
     switch(action.type) {
-        case 'ADD_TODO':
+        case ADD_TODO:
             return {
                 toDo: [
                     ...state.toDo,
                     {
                         value: action.payload,
                         completed: false,
-                        id: Date.now()
+                        id: idValue++
                     }
                 ]
             }
-        case 'TOGGLE_TODO':
+        case TOGGLE_TODO:
             console.log(action.payload.id)
             const newArray = state.toDo.map(todo => (todo.id === action.payload.id) ? { ...todo, completed: !todo.completed } : todo)
             console.log(newArray)
