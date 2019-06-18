@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ListGroup, Form, FormGroup, Input, Label, Button, Navbar, NavbarBrand } from 'reactstrap';
 
-import { addToDo, toggleToDo, deleteToDo } from '../actions/index';
+import { addToDo, toggleToDo, deleteToDo, clearAll, clearCompleted } from '../actions/index';
 import ToDoItem from './ToDoItem';
 
 class ToDoList extends React.Component {
@@ -47,9 +47,11 @@ class ToDoList extends React.Component {
                             <FormGroup className='mt-3'>
                                 <Label for="todo">What Do You Need To Do?</Label>
                                 <Input onChange={this.handleChanges} type='text' name='newToDo' id='newToDo' placeholder='New To Do...' value={this.state.newToDo} />
-                                <Button className='mt-3' color='primary'>Add New To Do</Button>
+                                <Button block className='mt-3' color='primary'>Add New To Do</Button>
                             </FormGroup>
                         </Form>
+                        <Button block color='success' onClick={this.props.clearCompleted} className='mb-3'>Clear Completed</Button>
+                        <Button block color='warning' onClick={this.props.clearAll} className='mb-3'>Clear All</Button>
                     </div>
                 </div>
             </div>
@@ -66,4 +68,4 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { addToDo, toggleToDo, deleteToDo }) (ToDoList)
+    { addToDo, toggleToDo, deleteToDo, clearAll, clearCompleted }) (ToDoList)

@@ -19,11 +19,7 @@ class ToDoItem extends React.Component {
         return(
             <ListGroupItem>
                 <span onClick={() => this.props.toggleToDo(this.props.toDoProp)} style={{textDecoration: this.props.toDoProp.completed ? 'line-through' : 'none'}}>{this.props.toDoProp.value}</span>
-                <Button onClick={
-                    (this.props.toDoProp.completed) ? () => this.props.deleteToDo(this.props.toDoProp) : this.toggle
-                } 
-                
-                size='sm' color='danger' className='float-right'>Delete</Button>
+                <Button onClick={(this.props.toDoProp.completed) ? () => this.props.deleteToDo(this.props.toDoProp) : this.toggle} size='sm' color={(this.props.toDoProp.completed) ? 'success' : 'danger'} className='float-right'>{(this.props.toDoProp.completed) ? 'Finished' : 'Delete'}</Button>
 
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Warning!</ModalHeader>

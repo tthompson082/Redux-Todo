@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, DELETE_TODO } from '../actions/index'
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, CLEAR_ALL, CLEAR_COMPLETED } from '../actions/index'
 
 const initialState = {
     toDo: [    
@@ -50,6 +50,16 @@ export const reducer = (state = initialState, action) => {
             console.log(updatedArray)
             return {
                 toDo: updatedArray
+            }
+        case CLEAR_ALL:
+            return {
+                toDo: []
+            }
+        case CLEAR_COMPLETED:
+            const clearedArray = state.toDo.filter(todo => todo.completed === false)
+            console.log(clearedArray)
+            return {
+                toDo: clearedArray
             }
         default:
             return state
