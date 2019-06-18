@@ -43,7 +43,9 @@ class ToDoList extends React.Component {
         return (
             <div>
                 <Navbar color='secondary' className='text-white'>
-                    <NavbarBrand className='mr-auto'>Redux To Do List</NavbarBrand>
+                    <NavbarBrand>
+                        <h1>Redux To Do List</h1>
+                    </NavbarBrand>
                 </Navbar>
                 <div className='row justify-content-md-center'>
                     <div className='col-4 offset-auto justify-content-center mt-4'>
@@ -60,7 +62,7 @@ class ToDoList extends React.Component {
                         <Form onSubmit={this.addToDo}>
                             <FormGroup className='mt-3'>
                                 <Label for="todo">What Do You Need To Do?</Label>
-                                <Input onChange={this.handleChanges} type='text' name='newToDo' id='newToDo' placeholder='New To Do...' value={this.state.newToDo} />
+                                <Input required onChange={this.handleChanges} type='text' name='newToDo' id='newToDo' placeholder='New To Do...' value={this.state.newToDo} />
                                 <Button block className='mt-3' color='primary'>Add New To Do</Button>
                             </FormGroup>
                         </Form>
