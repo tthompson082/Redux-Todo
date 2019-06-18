@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ListGroup, Form, FormGroup, Input, Label, Button, Navbar, NavbarBrand } from 'reactstrap';
 
-import { addToDo, toggleToDo } from '../actions/index';
+import { addToDo, toggleToDo, deleteToDo } from '../actions/index';
 import ToDoItem from './ToDoItem';
 
 class ToDoList extends React.Component {
@@ -39,6 +39,7 @@ class ToDoList extends React.Component {
                                     key={Math.random()}
                                     toDoProp={toDo}
                                     toggleToDo={this.props.toggleToDo}
+                                    deleteToDo={this.props.deleteToDo}
                                 />
                             ))}
                         </ListGroup>
@@ -65,4 +66,4 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { addToDo, toggleToDo }) (ToDoList)
+    { addToDo, toggleToDo, deleteToDo }) (ToDoList)

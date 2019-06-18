@@ -44,6 +44,13 @@ export const reducer = (state = initialState, action) => {
             return {
                 toDo: newArray
             }
+        case DELETE_TODO:
+            console.log(action.payload.id)
+            const updatedArray = state.toDo.filter(todo => todo.id !== action.payload.id)
+            console.log(updatedArray)
+            return {
+                toDo: updatedArray
+            }
         default:
             return state
     }
